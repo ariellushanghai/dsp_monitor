@@ -1,0 +1,201 @@
+{
+  "data": {
+    "summary": [
+      {
+        "name": "HANSHOUZHONG_GROUP",
+        "label": "韩守忠组",
+        "completeness": 93.23639568186826
+      },
+      {
+        "name": "SUNNA_GROUP",
+        "label": "孙娜组",
+        "completeness": 89.98152621855904
+      },
+      {
+        "name": "ZHANGRONGGANG_GROUP",
+        "label": "张荣钢组",
+        "completeness": 95.22789843988987
+      }
+    ],
+    "workflows": [
+      {
+        "id": 350363,
+        "rootJobId": 1,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_17_SUB_18",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_17_SUB_18",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350355,
+        "rootJobId": 2,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_10",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_10",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350364,
+        "rootJobId": 3,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_17_SUB_19",
+        "levels": 3,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_17_SUB_19",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350354,
+        "rootJobId": 4,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_8_SUB_9",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_8_SUB_9",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350346,
+        "rootJobId": 5,
+        "name": "6368_WORK_FLOW_SUB_1",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350353,
+        "rootJobId": 6,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_8",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_8",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350352,
+        "rootJobId": 7,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_7",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_7",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350350,
+        "rootJobId": 8,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_2_SUB_4_SUB_5",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_2_SUB_4_SUB_5",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350366,
+        "rootJobId": 9,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_21",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_21",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350356,
+        "rootJobId": 10,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_10_SUB_11",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_10_SUB_11",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350365,
+        "rootJobId": 11,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_20",
+        "levels": 3,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_20",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350358,
+        "rootJobId": 12,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_13",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_13",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350361,
+        "rootJobId": 13,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_16",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_16",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350362,
+        "rootJobId": 14,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_17",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_17",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350345,
+        "rootJobId": 15,
+        "name": "6368_WORK_FLOW",
+        "levels": 1,
+        "description": "6368_WORK_FLOW",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350347,
+        "rootJobId": 16,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_2",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_2",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350348,
+        "rootJobId": 17,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_2_SUB_3",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_2_SUB_3",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350349,
+        "rootJobId": 18,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_2_SUB_4",
+        "levels": 5,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_2_SUB_4",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350359,
+        "rootJobId": 19,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_14",
+        "levels": 3,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_14",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350351,
+        "rootJobId": 20,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350357,
+        "rootJobId": 21,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_10_SUB_11_SUB_12",
+        "levels": 3,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_6_SUB_10_SUB_11_SUB_12",
+        "category": "ZHANGRONGGANG_GROUP"
+      },
+      {
+        "id": 350360,
+        "rootJobId": 22,
+        "name": "6368_WORK_FLOW_SUB_1_SUB_15",
+        "levels": 4,
+        "description": "6368_WORK_FLOW_SUB_1_SUB_15",
+        "category": "ZHANGRONGGANG_GROUP"
+      }
+    ]
+  },
+  "err": 0,
+  "msg": null
+}

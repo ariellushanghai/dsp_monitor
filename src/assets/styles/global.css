@@ -1,0 +1,22 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#app .chart-tabs .el-tabs__content {
+  padding: 0;
+  width: 100%;
+  height: calc(100% - 40px);
+}
+#app .chart-tabs .el-tabs__content .el-tab-pane.chart-tabs-pane {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
