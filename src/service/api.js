@@ -3,18 +3,29 @@ import network from '@/service/network'
 export default {
 //  all
   getAll() {
-    return network.get('dspmonitor_all.json');
+    // return network.get('dspmonitor_all.json');
+    return network.get('/all');
   },
-  getWorkflowById() {
-    return network.get('getworkflowbyid_350351.json');
-  },
-  getWorkflowById2() {
-    return network.get('workflow_6368_WORK_FLOW_SUB_1.json');
-  },
-  getLayers(rootJobId) {
-    return network.get('layers.json');
+  getLayers(jobId) {
+    // return network.get('layers.json');
+
+
+    return network.get('/layers', {
+      params: {
+        'jobId': jobId
+      }
+    });
   },
   getJobRelies(jobId) {
-    return network.get('jobRelies.json');
+    console.log(`getJobRelies(${jobId})`);
+    // return network.get('jobRelies.json');
+
+    // return jobRelies(jobId);
+
+    return network.get('/jobRelies', {
+      params: {
+        'jobId': jobId
+      }
+    });
   }
 }

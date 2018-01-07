@@ -41,6 +41,8 @@
       fetchData() {
         API.getAll().then(res => {
           this.$store.dispatch('buildTree', res);
+        }, err => {
+          console.log(`err: `, err);
         });
       }
     },

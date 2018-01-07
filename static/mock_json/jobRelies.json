@@ -1,114 +1,130 @@
-// http://bip.pab.com.cn/cm/data-manager-svc/v1/dspmonitor/jobRelies?jobId=340150
 {
-    "data": {
-        "POST": [{
-            "id": 340925,
-            "name": "F_P_CUST_EMP_CON_NEW",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "FACT_RPSM",
-            "frequency": null
-        }, {
-            "id": 182044,
-            "name": "F_CUST_ATTR_FLAG_C",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "FACT_RPSM",
-            "frequency": null
-        }, {
-            "id": 335150,
-            "name": "F_ALL_TRADE_INFO_SWJ",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "FACT_RPSM",
-            "frequency": null
-        }, {
-            "id": 8150,
-            "name": "F_TRADE_INFO_SWJ",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "FACT_RPSM",
-            "frequency": null
-        }, {
-            "id": 340150,
-            "name": "B_IF_CUST_ACCT_CARD_PS",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "BASE",
-            "frequency": null
-        }, {
-            "id": 347867,
-            "name": "RS_GPSEEXP_CUST_ACCT_REL_PS",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "FILE",
-            "frequency": null
-        }, {
-            "id": 345179,
-            "name": "PPP",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "VIEW",
-            "frequency": null
-        }, {
-            "id": 345024,
-            "name": "B_IF_CUST_PAIC_UM_NUM",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "BASE",
-            "frequency": null
-        }, {
-            "id": 338849,
-            "name": "F_P_CUST_EMP_CON_BAK",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "FACT_RPSM",
-            "frequency": null
-        }],
-        "PRE": [{
-            "id": 3460,
-            "name": "FS_VP_AMED_CUR",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "MID",
-            "frequency": null
-        }, {
-            "id": 3528,
-            "name": "FS_DPS_RDS_KDSH_KEHUZH_CUR",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "MID",
-            "frequency": null
-        }, {
-            "id": 2258,
-            "name": "FS_DPS_RDS_KDSD_KEHUZH",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "MID",
-            "frequency": null
-        }, {
-            "id": 3480,
-            "name": "FS_S37_ODSCARDM_CUR",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "MID",
-            "frequency": null
-        }, {
-            "id": 340150,
-            "name": "B_IF_CUST_ACCT_CARD_PS",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "BASE",
-            "frequency": null
-        }, {
-            "id": 3479,
-            "name": "FS_S37_BADM_CARD_INF_CUR",
-            "description": null,
-            "status": "RUNNING",
-            "storage": "MID",
-            "frequency": null
-        }]
-    },
-    "err": 0,
-    "msg": null
+  "data": {
+    "POST": [
+      {
+        "id": 340925,
+        "name": "F_P_CUST_EMP_CON_NEW",
+        "description": null,
+        "status": "ERROR",
+        "storage": "FACT_RPSM",
+        "frequency": null
+      },
+      {
+        "id": 182044,
+        "name": "F_CUST_ATTR_FLAG_C",
+        "description": null,
+        "status": "PENDING",
+        "storage": "FACT_RPSM",
+        "frequency": null
+      },
+      {
+        "id": 335150,
+        "name": "F_ALL_TRADE_INFO_SWJ",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "FACT_RPSM",
+        "frequency": null
+      },
+      {
+        "id": 8150,
+        "name": "F_TRADE_INFO_SWJ",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "FACT_RPSM",
+        "frequency": null
+      },
+      {
+        "id": 340150,
+        "name": "B_IF_CUST_ACCT_CARD_PS",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "BASE",
+        "frequency": null
+      },
+      {
+        "id": 347867,
+        "name": "RS_GPSEEXP_CUST_ACCT_REL_PS",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "FILE",
+        "frequency": null
+      },
+      {
+        "id": 345179,
+        "name": "PPP",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "VIEW",
+        "frequency": null
+      },
+      {
+        "id": 345024,
+        "name": "B_IF_CUST_PAIC_UM_NUM",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "BASE",
+        "frequency": null
+      },
+      {
+        "id": 338849,
+        "name": "F_P_CUST_EMP_CON_BAK",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "FACT_RPSM",
+        "frequency": null
+      }
+    ],
+    "PRE": [
+      {
+        "id": 3460,
+        "name": "FS_VP_AMED_CUR",
+        "description": null,
+        "status": "PENDING",
+        "storage": "MID",
+        "frequency": null
+      },
+      {
+        "id": 3528,
+        "name": "FS_DPS_RDS_KDSH_KEHUZH_CUR",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "MID",
+        "frequency": null
+      },
+      {
+        "id": 2258,
+        "name": "FS_DPS_RDS_KDSD_KEHUZH",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "MID",
+        "frequency": null
+      },
+      {
+        "id": 3480,
+        "name": "FS_S37_ODSCARDM_CUR",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "MID",
+        "frequency": null
+      },
+      {
+        "id": 340150,
+        "name": "B_IF_CUST_ACCT_CARD_PS",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "BASE",
+        "frequency": null
+      },
+      {
+        "id": 3479,
+        "name": "FS_S37_BADM_CARD_INF_CUR",
+        "description": null,
+        "status": "RUNNING",
+        "storage": "MID",
+        "frequency": null
+      }
+    ]
+  },
+  "err": 0,
+  "msg": null
 }

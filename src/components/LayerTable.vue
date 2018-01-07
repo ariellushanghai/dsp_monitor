@@ -41,31 +41,35 @@
     methods: {
       handleRowClick(row, event, column) {
         console.log('handleRowClick(', row, event, column, ')');
-        this.$emit('rowClick',row.id);
+        this.$emit('rowClick',row);
       }
     }
   }
 </script>
 
-<style scoped>
+<style>
   .layer-table {
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto !important;
   }
+  .el-table tr:hover {
+    cursor: pointer;
+  }
+  /*.layer-table.el-table tr.el-table__row.done-row {*/
+    /*background-color: #28a745;*/
+  /*}*/
 
-  .layer-table.el-table tr.el-table__row.done-row {
-    background-color: #28a745;
-  }
+  /*.layer-table.el-table tr.el-table__row.running-row {*/
+    /*background-color: #007bff;*/
+  /*}*/
 
-  .layer-table.el-table tr.el-table__row.running-row {
-    background-color: #007bff;
-  }
+  /*.layer-table.el-table tr.el-table__row.error-row {*/
+    /*background-color: #dc3545;*/
+  /*}*/
 
-  .layer-table.el-table tr.el-table__row.error-row {
-    background-color: #dc3545;
-  }
-
-  .layer-table.el-table tr.el-table__row.pending-row {
-    background-color: #ffc107;
-  }
+  /*.layer-table.el-table tr.el-table__row.pending-row {*/
+    /*background-color: #ffc107;*/
+  /*}*/
 </style>

@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       name: 'workflows',
-      path: '/workflows/:rootJobId',
+      path: '/workflows/:workflow',
       component: Workflows
     },
     {

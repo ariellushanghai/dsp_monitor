@@ -41,6 +41,16 @@ const getters = {
       }
     });
     return menu;
+  },
+  getWorkflowByName: (state) => (name) => {
+    let wfs = [];
+
+    _.forEach(state.all, (g) => {
+      wfs.push(g.workflows);
+    });
+
+    return _.find(_.flatten(wfs), {'name': name});
+
   }
 };
 

@@ -13,7 +13,8 @@ export const buildTree = ({commit, state}, input) => {
     result[wf.category].workflows.push({
       name: `${wf.name}`,
       id: `${wf.id}`,
-      rootJobId: wf.rootJobId
+      rootJobId: wf.rootJobId,
+      group: wf.category
     });
   });
   commit(types.SET_TREE, result);

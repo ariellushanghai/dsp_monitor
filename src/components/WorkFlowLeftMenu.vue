@@ -1,25 +1,26 @@
 <template>
-  <el-menu
-    router
-    class="left-menu"
-    :unique-opened=true
-    @select="handleSelectMenu"
-    background-color="#333644"
-    text-color="#fff"
-    active-text-color="#EA5505">
+    <el-menu
+            router
+            class="left-menu"
+            unique-opened
+            @select="handleSelectMenu"
+            :default-active="defaultActive"
+            background-color="#333644"
+            text-color="#fff"
+            active-text-color="#EA5505">
 
-    <el-submenu v-for="item in data" :index="String(item.name)" :key="item.name">
-      <template slot="title">
-        <i class="el-icon-tickets"></i>
-        <span>{{item.label}}</span>
-      </template>
+        <el-submenu v-for="item in data" :index="String(item.name)" :key="item.name">
+            <template slot="title">
+                <i class="el-icon-tickets"></i>
+                <span>{{item.label}}</span>
+            </template>
 
-      <el-menu-item v-for="wf in item.children" :index="String(wf.label)" :key="wf.label"
-                    :title="wf.label" :route="wf.route">
-        <span slot="title">{{wf.label}}</span>
-      </el-menu-item>
-    </el-submenu>
-  </el-menu>
+            <el-menu-item v-for="wf in item.children" :index="String('/workflows/'+wf.label)" :key="wf.label"
+                          :title="wf.label" :route="wf.route">
+                <span slot="title">{{wf.label}}</span>
+            </el-menu-item>
+        </el-submenu>
+    </el-menu>
 </template>
 
 <script>
@@ -31,8 +32,13 @@
     data() {
       return {};
     },
+    computed: {
+      defaultActive() {
+        return this.$route.path;
+      }
+    },
     mounted() {
-      console.log(this.$route)
+      // console.log('WorkFlowLeftMenu  mounted(): ',this.$route);
     },
     methods: {
       fetchData(rootJobId) {
@@ -40,18 +46,21 @@
       },
       handleSelectMenu(key, keyPath) {
         console.log('handleSelectMenu(', key, keyPath, ')');
-        let wf = _.find(this.$store.state.all[keyPath[0]].workflows, {name: key});
+        let group_name = keyPath[0];
+        let workflow_name = keyPath[1].replace(/^\/workflows\//, '');
+        let wf = _.find(this.$store.state.all[group_name].workflows, {name: workflow_name});
         console.log(wf);
+        console.log(workflow_name);
         if (wf) {
           this.fetchData(wf.rootJobId).then(res => {
             this.$store.commit('SET_ROOTJOB_LAYERS', {
-              'group': keyPath[0],
-              'workflow': keyPath[1],
+              'group': group_name,
+              'workflow': workflow_name,
               'layers': res
             });
             this.$store.commit('SET_SELECTED_WORKFLOW', {
-              'group': keyPath[0],
-              'workflow': keyPath[1]
+              'group': group_name,
+              'workflow': workflow_name
             });
           });
         }
@@ -61,12 +70,12 @@
 </script>
 
 <style scoped>
-  .left-menu .el-submenu .el-menu-item {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .left-menu .el-submenu .el-menu-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-  .left-menu .el-menu-item {
-    font-size: 12px;
-  }
+    .left-menu .el-menu-item {
+        font-size: 12px;
+    }
 </style>
