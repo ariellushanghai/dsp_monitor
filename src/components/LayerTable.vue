@@ -1,7 +1,7 @@
 <template>
   <el-table
     class="layer-table"
-    :data="layer"
+    :data="table"
     border
     :fit=true
     @row-click="handleRowClick">
@@ -12,14 +12,15 @@
     </el-table-column>
     <el-table-column
       prop="name"
-      label="JOB名字">
+      label="JOB名字"
+      show-overflow-tooltip>
     </el-table-column>
     <el-table-column
       prop="status"
       label="状态"
+      sortable
       width="150">
       <template slot-scope="scope">
-        <!--<el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>-->
         <el-tag :type="scope.row.status| transStatusToTag">{{scope.row.status}}</el-tag>
       </template>
     </el-table-column>
@@ -33,15 +34,31 @@
     data() {
       return {}
     },
+    // mounted() {},
     computed: {
       table() {
-        return this.$store.state;
+        console.log('layer: ', this.layer);
+        return this.layer.sort((a, b) => {
+          if (a.status === 'ERROR') {
+            return -1;
+          }
+          if (b.status === 'ERROR') {
+            return 1;
+          }
+          if (a.status < b.status) {
+            return -1
+          }
+          if (a.status > b.status) {
+            return 1
+          }
+          return 0;
+        });
       }
     },
     methods: {
       handleRowClick(row, event, column) {
         console.log('handleRowClick(', row, event, column, ')');
-        this.$emit('rowClick',row);
+        this.$emit('rowClick', row);
       }
     }
   }
@@ -54,22 +71,24 @@
     overflow-x: hidden;
     overflow-y: auto !important;
   }
+
   .el-table tr:hover {
     cursor: pointer;
   }
+
   /*.layer-table.el-table tr.el-table__row.done-row {*/
-    /*background-color: #28a745;*/
+  /*background-color: #28a745;*/
   /*}*/
 
   /*.layer-table.el-table tr.el-table__row.running-row {*/
-    /*background-color: #007bff;*/
+  /*background-color: #007bff;*/
   /*}*/
 
   /*.layer-table.el-table tr.el-table__row.error-row {*/
-    /*background-color: #dc3545;*/
+  /*background-color: #dc3545;*/
   /*}*/
 
   /*.layer-table.el-table tr.el-table__row.pending-row {*/
-    /*background-color: #ffc107;*/
+  /*background-color: #ffc107;*/
   /*}*/
 </style>

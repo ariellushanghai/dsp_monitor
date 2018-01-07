@@ -4,10 +4,10 @@
       <el-row :gutter="20" type="flex" justify="center">
         <el-col :span="4" v-for="(group, index) in list_of_group" :key="group.title">
           <ChartGauge :height="height"
-                             :title="group.label"
-                             :id="group.dom_id"
-                             :dom_id="group.dom_id"
-                             :value="group.completeness">
+                      :title="group.label"
+                      :id="group.dom_id"
+                      :dom_id="group.dom_id"
+                      :value="group.completeness">
           </ChartGauge>
         </el-col>
       </el-row>
@@ -30,7 +30,7 @@
       }
     },
     computed: {
-      list_of_group () {
+      list_of_group() {
         return this.$store.getters.workflows;
       }
     },
@@ -43,6 +43,10 @@
           this.$store.dispatch('buildTree', res);
         }, err => {
           console.log(`err: `, err);
+          this.$notify({
+            message: `${err}`,
+            type: 'error'
+          });
         });
       }
     },

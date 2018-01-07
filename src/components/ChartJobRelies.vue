@@ -1,5 +1,5 @@
 <template>
-    <div :id="dom_id" class="chart-workflow"></div>
+  <div :id="dom_id" class="chart-workflow"></div>
 </template>
 
 <script>
@@ -8,7 +8,6 @@
   import vis from 'vis'
   import 'vis/dist/vis-network.min.css'
   import jobRelies from '@/service/mockData' // mocking data
-
 
   export default {
     name: 'ChartJobRelies',
@@ -32,12 +31,25 @@
         console.log('getJobRelies fetched: ', err);
       });
     },
+    watch: {
+      root_job: function (newRootJob) {
+        console.log('root_job watch() ', newRootJob);
+        this.fetchData(newRootJob.id).then(res => {
+          console.log('getJobRelies fetched: ', res);
+          this.renderChart(this.dom_id, this.createDataSet(newRootJob, res));
+        }, err => {
+          console.log('getJobRelies fetched: ', err);
+        });
+      }
+    },
     methods: {
       fetchData(jobId) {
+        console.log(`fetchData(${jobId})`);
         // return API.getJobRelies(jobId);
         return jobRelies(jobId);
       },
       createDataSet(job, relations) {
+        console.log(`createDataSet(`, job, relations, `)`);
         let self = this;
         // let chart_data = {};
         let ns = [{
@@ -283,8 +295,8 @@
 </script>
 
 <style scoped>
-    .chart-workflow {
-        width: 100%;
-        height: 100%;
-    }
+  .chart-workflow {
+    width: 100%;
+    height: 100%;
+  }
 </style>
