@@ -8,8 +8,6 @@ export default {
   },
   getLayers(jobId) {
     // return network.get('layers.json');
-
-
     return network.get('/layers', {
       params: {
         'jobId': jobId
@@ -19,9 +17,6 @@ export default {
   getJobRelies(jobId) {
     console.log(`getJobRelies(${jobId})`);
     // return network.get('jobRelies.json');
-
-    // return jobRelies(jobId);
-
     return network.get('/jobRelies', {
       params: {
         'jobId': jobId

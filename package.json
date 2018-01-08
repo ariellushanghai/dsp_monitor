@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "babel-preset-es2015": "^6.24.1",
     "echarts": "^3.8.5",
     "element-ui": "^2.0.10",
     "lodash": "^4.17.4",
@@ -46,6 +47,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^21.2.0",
     "jest-serializer-vue": "^0.3.0",
+    "jsonfile": "^4.0.0",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",

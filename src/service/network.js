@@ -9,14 +9,11 @@ axios.defaults.headers.common['Pragma'] = 'no-cache';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.get['Content-Type'] = 'application/json';
 
-
 axios.interceptors.request.use(
   config => {
     config.validateStatus = function (status) {
-      console.log(`status: ${status}`);
       return Number(status) === 200;
     };
-    console.log('request.config: ', config);
     return config;
   },
   err => {
@@ -26,16 +23,11 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   res => {
-    console.log('response: ', res);
     if (Number(res.status) === 200) {
       if (res.data && Number(res.data.err) === 0) {
-        // console.log('res: ',res);
         return res.data.data;
       } else if (Number(res.data.err) === 401) {
         console.log('未登陆', res);
-        console.log(location.href.replace(location.search, ''));
-        console.log(loginURL + location.href);
-        debugger;
         location.replace(loginURL + encodeURIComponent(location.href));
         return Promise.reject(res);
       } else {

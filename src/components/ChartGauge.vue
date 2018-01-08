@@ -1,5 +1,5 @@
 <template>
-  <div :id="dom_id" :style="{width: '100%', height: height}"></div>
+    <div :id="dom_id" :style="{width: '100%', height: height}"></div>
 </template>
 
 <script>
@@ -11,7 +11,7 @@
   export default {
     name: 'ChartGauge',
     props: ['title', 'value', 'dom_id', 'height'],
-    data() {
+    data: function () {
       return {
         option: {
           title: {
@@ -61,7 +61,7 @@
         }
       }
     },
-    mounted() {
+    mounted: function () {
       this.renderGaugeChart(this.dom_id, this.option);
     },
     methods: {

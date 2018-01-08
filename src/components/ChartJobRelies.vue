@@ -7,7 +7,7 @@
   import _ from 'lodash'
   import vis from 'vis'
   import 'vis/dist/vis-network.min.css'
-  import jobRelies from '@/service/mockData' // mocking data
+  // import jobRelies from '@/service/mockData' // mocking data
 
   export default {
     name: 'ChartJobRelies',
@@ -45,8 +45,8 @@
     methods: {
       fetchData(jobId) {
         console.log(`fetchData(${jobId})`);
-        // return API.getJobRelies(jobId);
-        return jobRelies(jobId);
+        return API.getJobRelies(jobId);
+        // return jobRelies(jobId);
       },
       createDataSet(job, relations) {
         console.log(`createDataSet(`, job, relations, `)`);
