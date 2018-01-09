@@ -1,5 +1,5 @@
 <template>
-  <el-container class="overview">
+  <el-container class="overview" v-loading.fullscreen.lock="isLoading">
     <el-main>
       <el-row :gutter="20" type="flex" justify="center">
         <el-col :span="4" v-for="(group, index) in list_of_group" :key="group.title">
@@ -26,7 +26,8 @@
     },
     data() {
       return {
-        height: '400px'
+        height: '400px',
+        isLoading: false
       }
     },
     computed: {
@@ -39,10 +40,18 @@
     },
     methods: {
       fetchData() {
+        let loading = this.$loading({
+          lock: true,
+          text: '请求数据中...',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.5)'
+        });
         API.getAll().then(res => {
           this.$store.dispatch('buildTree', res);
+          loading.close();
         }, err => {
           console.log(`err: `, err);
+          loading.close();
           this.$notify({
             message: `${err}`,
             type: 'error'

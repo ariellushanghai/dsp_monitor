@@ -6,7 +6,6 @@
             size="small"
             fit
             stripe
-            border
             @row-click="handleRowClick">
         <el-table-column
                 prop="id"

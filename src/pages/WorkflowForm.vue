@@ -2,10 +2,10 @@
   <el-container class="workflow-form">
     <el-main>
       <el-row type="flex" justify="center">
-        <el-col :span="12"><h2>{{title}}</h2></el-col>
+        <el-col :span="8"><h2>{{title}}</h2></el-col>
       </el-row>
       <el-row type="flex" justify="center">
-        <el-col :span="12">
+        <el-col :span="8">
           <el-form ref="form" label-width="110px" size="mini" :rules="rules" :model="form">
             <el-form-item label="名称" prop="name">
               <el-input v-model="form.name" placeholder="请输入WorkFlow名称" clearable></el-input>

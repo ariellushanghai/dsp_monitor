@@ -1,12 +1,12 @@
 <template>
   <el-row type="flex" class="row">
-    <el-col :span="1">
+    <el-col :sm="1" :md="1" :lg="2" :xl="2">
       <router-link :to="{path: '/'}" class="link col">
         <img src="../assets/images/logo.jpg" class="logo"/>
       </router-link>
     </el-col>
-    <el-col :span="3" class="title">
-      DSP作业监控
+    <el-col :sm="3" :md="3" :lg="2" :xl="2" class="title">
+      <span>DSP作业监控</span>
     </el-col>
     <el-col :span="20">
       <el-menu mode="horizontal" background-color="#333644" text-color="#fff" active-text-color="#EA5505"
@@ -64,6 +64,7 @@
   }
 
   .title {
+    justify-content: center;
     line-height: 60px;
     text-align: center;
     background-color: #EA5505;

@@ -1,26 +1,26 @@
 <template>
-    <el-menu
-            router
-            class="left-menu"
-            unique-opened
-            @select="handleSelectMenu"
-            :default-active="defaultActive"
-            background-color="#333644"
-            text-color="#fff"
-            active-text-color="#EA5505">
+  <el-menu
+    router
+    class="left-menu"
+    unique-opened
+    @select="handleSelectMenu"
+    :default-active="defaultActive"
+    background-color="#333644"
+    text-color="#fff"
+    active-text-color="#EA5505">
 
-        <el-submenu v-for="item in data" :index="String(item.name)" :key="item.name">
-            <template slot="title">
-                <i class="el-icon-tickets"></i>
-                <span>{{item.label}}</span>
-            </template>
-
-            <el-menu-item v-for="wf in item.children" :index="String('/workflows/'+wf.label)" :key="wf.label"
-                          :title="wf.label" :route="wf.route">
-                <span slot="title">{{wf.label}}</span>
-            </el-menu-item>
-        </el-submenu>
-    </el-menu>
+    <el-submenu v-for="item in data" :index="String(item.name)" :key="item.name">
+      <template slot="title">
+        <i class="el-icon-tickets"></i>
+        <span>{{item.label}}</span>
+      </template>
+      <el-tooltip v-for="wf in item.children" :key="wf.label" effect="dark" :content="wf.label" placement="right">
+        <el-menu-item :index="String('/workflows/'+wf.label)" :key="wf.label" :route="wf.route">
+          <span slot="title">{{wf.label}}</span>
+        </el-menu-item>
+      </el-tooltip>
+    </el-submenu>
+  </el-menu>
 </template>
 
 <script>
@@ -70,12 +70,12 @@
 </script>
 
 <style scoped>
-    .left-menu .el-submenu .el-menu-item {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  .left-menu .el-submenu .el-menu-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .left-menu .el-menu-item {
-        font-size: 12px;
-    }
+  .left-menu .el-menu-item {
+    font-size: 12px;
+  }
 </style>

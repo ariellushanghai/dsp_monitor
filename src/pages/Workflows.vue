@@ -1,40 +1,54 @@
 <template>
-    <el-container class="workflows">
-        <el-main class="workflows-main">
-            <el-row type="flex" style="height: 100%;">
-                <el-col :span="4"
-                        style="height: 100%;background-color: #333644;overflow-y: auto;">
-                    <el-row type="flex">
-                        <el-col :span="24" style="">
-                            <work-flow-left-menu :data="workflow_menu_data"></work-flow-left-menu>
-                        </el-col>
-                    </el-row>
-                </el-col>
+  <el-container class="workflows">
+    <el-main class="workflows-main">
+      <el-row type="flex" style="height: 100%;">
+        <el-col :span="4"
+                style="height: 100%;background-color: #333644;overflow-y: auto;">
+          <el-row type="flex">
+            <el-col :span="24" style="">
+              <work-flow-left-menu :data="workflow_menu_data"></work-flow-left-menu>
+            </el-col>
+          </el-row>
+        </el-col>
 
-                <el-col :span="20" style="height: 100%;position: relative;overflow: hidden;">
-                    <el-main style="padding: 0;height: 100%;width: 100%;position: relative;">
-                        <el-row class="chart-tabs-container">
-                            <el-tabs class="chart-tabs" type="border-card" v-model="activeLayerName">
-                                <el-tab-pane class="chart-tabs-pane" v-for="tab in selected_workflow_layers_keys"
-                                             :name="tab" :label="tab" :key="tab">
-                                    <layer-table :layer="selected_workflow_layers[tab]"
-                                                 v-on:rowClick="openJobReliesDialog"></layer-table>
-
-                                </el-tab-pane>
-                            </el-tabs>
-                        </el-row>
-                        <el-dialog :title="chart_title" :visible.sync="dialogJobReliesVisible"
-                                   custom-class="job-relies-chart"
-                                   :before-close="handleCloseDialog"
-                                   :close-on-click-modal=false :show-close=true :modal=false fullscreen center>
-                            <ChartJobRelies :dom_id="chart_workflow_DOM_ID"
-                                            :root_job="selected_root_job"></ChartJobRelies>
-                        </el-dialog>
-                    </el-main>
-                </el-col>
+        <el-col :span="20" style="height: 100%;position: relative;overflow: hidden;">
+          <el-main style="padding: 0;height: 100%;width: 100%;position: relative;">
+            <el-row type="flex" align="middle" class="chart-buttons-container">
+              <el-col :xs="18" :sm="18" :md="19" :lg="20" :xl="21" class="title">
+                <div style="padding: 0 20px;">{{selected_workflow.name}}</div>
+                <div>更新于：{{timestamp_data_fetched}}</div>
+              </el-col>
+              <el-col :xs="6" :sm="6" :md="5" :lg="4" :xl="3">
+                <div class="buttons-group">
+                  <el-button @click="refreshAll" :loading="isLoading" type="primary" icon="el-icon-refresh"
+                             size="small">刷新
+                  </el-button>
+                  <el-button type="primary" icon="el-icon-edit" size="small">编辑</el-button>
+                </div>
+              </el-col>
             </el-row>
-        </el-main>
-    </el-container>
+            <el-row class="chart-tabs-container">
+              <el-tabs class="chart-tabs" type="border-card" v-model="activeLayerName">
+                <el-tab-pane class="chart-tabs-pane" v-for="tab in selected_workflow_layers_keys"
+                             :name="tab" :label="tab" :key="tab">
+                  <layer-table :layer="selected_workflow_layers[tab]"
+                               v-on:rowClick="openJobReliesDialog"></layer-table>
+
+                </el-tab-pane>
+              </el-tabs>
+            </el-row>
+            <el-dialog :title="chart_title" :visible.sync="dialogJobReliesVisible"
+                       custom-class="job-relies-chart"
+                       :before-close="handleCloseDialog"
+                       :close-on-click-modal=false :show-close=true :modal=false fullscreen center>
+              <ChartJobRelies :dom_id="chart_workflow_DOM_ID"
+                              :root_job="selected_root_job"></ChartJobRelies>
+            </el-dialog>
+          </el-main>
+        </el-col>
+      </el-row>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
@@ -60,7 +74,9 @@
         chart_workflow_DOM_ID: 'chart_workflow',
         chart_title: 'JOB依赖关系',
         dialogJobReliesVisible: false,
-        selected_root_job: null
+        selected_root_job: null,
+        isLoading: false,
+        timestamp_data_fetched: (new Date()).toLocaleString()
       }
     },
     computed: {
@@ -130,15 +146,7 @@
     },
     mounted: function () {
       console.log('Workflows mounted()');
-      this.fetchData('all').then(res => {
-        this.$store.dispatch('buildTree', res);
-      }, err => {
-        console.log(`err: `, err);
-        this.$notify({
-          message: `${err}`,
-          type: 'error'
-        });
-      });
+      this.refreshAll();
     },
     methods: {
       fetchData(what, param) {
@@ -152,6 +160,26 @@
           default:
             console.log(`fetchData(${arguments})`);
         }
+      },
+      refreshAll() {
+        console.log('refreshAll()');
+        this.isLoading = true;
+        this.fetchData('all').then(res => {
+          this.$store.dispatch('buildTree', res);
+          this.$notify({
+            message: `数据已更新`,
+            type: 'success'
+          });
+          this.isLoading = false;
+          this.timestamp_data_fetched = (new Date()).toLocaleString();
+        }, err => {
+          console.log(`err: `, err);
+          this.$notify({
+            message: `${err}`,
+            type: 'error'
+          });
+          this.isLoading = false;
+        });
       },
       openJobReliesDialog(job) {
         console.log(`openJobReliesDialog(`, job, `)`);
@@ -172,49 +200,65 @@
 </script>
 
 <style>
-    .workflows {
-        background-color: antiquewhite;
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
+  .workflows {
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
 
-    .workflows .workflows-main {
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-    }
+  .workflows .workflows-main {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 
-    .chart-tabs-container {
-        width: 100%;
-        height: 100%;
-    }
+  .chart-tabs-container {
+    width: 100%;
+    height: calc(100% - 40px);
+  }
 
-    .chart-tabs {
-        height: 100%;
-    }
+  .chart-buttons-container {
+    color: rgb(234, 85, 5);
+    background-color: rgb(51, 54, 68);
+    height: 40px;
+  }
 
-    .left-menu {
-        border-right: 1px solid #333644;
-    }
+  .title {
+    display: flex;
+    justify-content: space-between;
+  }
 
-    .el-dialog--center .el-dialog__header {
-        background-color: antiquewhite;
-        padding-top: 15px;
-        max-height: 49px;
-    }
+  .buttons-group {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-    .el-dialog--center .el-dialog__body {
-        background-color: antiquewhite;
-        padding: 0;
-        width: 100%;
-        height: calc(100% - 49px);
-    }
+  .chart-tabs {
+    height: 100%;
+  }
 
-    .el-dialog__headerbtn .el-dialog__close {
-        color: #F56C6C;
-    }
+  .left-menu {
+    border-right: 1px solid #333644;
+  }
+
+  .el-dialog--center .el-dialog__header {
+    background-color: antiquewhite;
+    padding-top: 15px;
+    max-height: 49px;
+  }
+
+  .el-dialog--center .el-dialog__body {
+    background-color: antiquewhite;
+    padding: 0;
+    width: 100%;
+    height: calc(100% - 49px);
+  }
+
+  .el-dialog__headerbtn .el-dialog__close {
+    color: #F56C6C;
+  }
 
 </style>
