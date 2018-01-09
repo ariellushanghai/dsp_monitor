@@ -13,7 +13,7 @@
                :default-active="defaultActive" router>
         <el-menu-item index="/overview">概览</el-menu-item>
         <el-menu-item index="/workflows/all">WorkFlows</el-menu-item>
-        <!--<el-menu-item index="/workflow_form/0">新建WorkFlow</el-menu-item>-->
+        <el-menu-item index="/workflowform/0">新建WorkFlow</el-menu-item>
       </el-menu>
     </el-col>
   </el-row>
@@ -24,22 +24,11 @@
     name: 'GlobalHeader',
     data() {
       return {
-        links: [{
-          name: '概览',
-          url: 'overview'
-        }, {
-          name: 'WorkFlows',
-          url: 'workflows'
-        }, {
-          name: '新建WorkFlow',
-          url: 'workflow_form'
-        }]
       }
     },
     computed: {
       defaultActive() {
-        let regex = /^\/workflows\//;
-        if (regex.exec(this.$route.path)) {
+        if (/^\/workflows\//.exec(this.$route.path)) {
           return '/workflows/all'
         }
         return this.$route.path;

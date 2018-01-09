@@ -4,6 +4,7 @@ import {loginURL} from '@/conf/env'
 
 const OverView = r => require(['@/pages/OverView'], r);
 const Workflows = r => require(['@/pages/Workflows'], r);
+const WorkflowForm = r => require(['@/pages/WorkflowForm'], r);
 
 
 export default new Router({
@@ -24,6 +25,11 @@ export default new Router({
       name: 'workflows',
       path: '/workflows/:workflow',
       component: Workflows
+    },
+    {
+      name: 'workflowform',
+      path: '/workflowform/:workflow',
+      component: WorkflowForm
     }
   ]
 })

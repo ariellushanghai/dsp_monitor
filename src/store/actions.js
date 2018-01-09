@@ -14,7 +14,8 @@ export const buildTree = ({commit, state}, input) => {
       name: `${wf.name}`,
       id: `${wf.id}`,
       rootJobId: wf.rootJobId,
-      group: wf.category
+      group: wf.category,
+      category: wf.category
     });
   });
   commit(types.SET_TREE, result);
