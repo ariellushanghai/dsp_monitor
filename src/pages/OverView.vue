@@ -54,7 +54,8 @@
           loading.close();
           this.$notify({
             message: `${err}`,
-            type: 'error'
+            type: 'error',
+            duration: 0
           });
         });
       }

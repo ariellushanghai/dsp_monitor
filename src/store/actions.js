@@ -7,16 +7,18 @@ export const buildTree = ({commit, state}, input) => {
   input.summary.forEach((g) => {
     result[g.name] = _.assign(g, {'workflows': []});
   });
-  console.log(result);
 
-  input.workflows.forEach(function (wf) {
+
+  _.sortBy(input.workflows, ['name']).forEach(function (wf) {
     result[wf.category].workflows.push({
       name: `${wf.name}`,
       id: `${wf.id}`,
       rootJobId: wf.rootJobId,
       group: wf.category,
-      category: wf.category
+      category: wf.category,
+      description: wf.description
     });
   });
+  console.log(result);
   commit(types.SET_TREE, result);
 };

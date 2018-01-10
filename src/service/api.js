@@ -22,5 +22,14 @@ export default {
         'jobId': jobId
       }
     });
+  },
+  addWorkflow(payload) {
+    return network.post('/workflow/add', payload);
+  },
+  editWorkflow(payload) {
+    return network.post('/workflow/edit', payload);
+  },
+  deleteWorkflow(id) {
+    return network.post('/workflow/delete', payload);
   }
 }

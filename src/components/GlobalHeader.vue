@@ -31,6 +31,9 @@
         if (/^\/workflows\//.exec(this.$route.path)) {
           return '/workflows/all'
         }
+        if (/^\/workflowform\//.exec(this.$route.path)) {
+          return '/workflowform/0'
+        }
         return this.$route.path;
       }
     }

@@ -23,7 +23,7 @@
                   <el-button @click="refreshAll" :loading="isLoading" type="primary" icon="el-icon-refresh"
                              size="small">刷新
                   </el-button>
-                  <el-button type="primary" icon="el-icon-edit" size="small">编辑</el-button>
+                  <el-button @click="goToForm" type="primary" icon="el-icon-edit" size="small">编辑</el-button>
                 </div>
               </el-col>
             </el-row>
@@ -168,7 +168,8 @@
           this.$store.dispatch('buildTree', res);
           this.$notify({
             message: `数据已更新`,
-            type: 'success'
+            type: 'success',
+            duration: 2000
           });
           this.isLoading = false;
           this.timestamp_data_fetched = (new Date()).toLocaleString();
@@ -176,7 +177,8 @@
           console.log(`err: `, err);
           this.$notify({
             message: `${err}`,
-            type: 'error'
+            type: 'error',
+            duration: 0
           });
           this.isLoading = false;
         });
@@ -189,6 +191,10 @@
       },
       handleCloseDialog(done) {
         return done();
+      },
+      goToForm() {
+        console.log(`selected_workflow: ${this.selected_workflow.id}`);
+        return router.push({name: 'workflowform', params: {workflow: this.selected_workflow.id}});
       }
     },
     components: {

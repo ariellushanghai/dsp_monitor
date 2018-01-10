@@ -44,13 +44,26 @@ const getters = {
   },
   getWorkflowByName: (state) => (name) => {
     let wfs = [];
-
     _.forEach(state.all, (g) => {
       wfs.push(g.workflows);
     });
-
     return _.find(_.flatten(wfs), {'name': name});
-
+  },
+  getWorkflowById: (state) => (id) => {
+    let wfs = [];
+    _.forEach(state.all, (g) => {
+      wfs.push(g.workflows);
+    });
+    // console.log(`_.flatten(wfs): `, _.flatten(wfs))
+    return _.find(_.flatten(wfs), {'id': String(id)});
+  },
+  getCategoryOptions: state => {
+    return _.map(state.all, (g) => {
+      return {
+        name: g.name,
+        label: g.label
+      }
+    });
   }
 };
 
