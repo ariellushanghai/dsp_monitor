@@ -30,6 +30,10 @@ export default {
     return network.post('/workflow/edit', payload);
   },
   deleteWorkflow(id) {
-    return network.post('/workflow/delete', payload);
+    return network.get('/workflow/delete', {
+      params: {
+        'id': `${id}`
+      }
+    });
   }
 }
