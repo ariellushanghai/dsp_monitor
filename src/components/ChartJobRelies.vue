@@ -1,5 +1,5 @@
 <template>
-  <div :id="dom_id" class="chart-workflow"></div>
+  <div :id="dom_id" class="chart-workflow" :class="{waiting:waiting}"></div>
 </template>
 
 <script>
@@ -14,6 +14,7 @@
     props: ['dom_id', 'root_job'],
     data() {
       return {
+        waiting: false,
         workflow_data: [],
         network: null,
         dataset_chart: {
@@ -279,11 +280,14 @@
           // debugger
           if (params.nodes && params.nodes.length) {
             console.log(params.nodes[0]);
+            self.waiting = true;
             self.fetchData(params.nodes[0]).then(res => {
               console.log('getJobRelies fetched: ', res);
+              self.waiting = false;
               return self.updateDataSet(self.dataset_chart.nodes.get(params.nodes[0]), res);
             }, err => {
               console.log('getJobRelies fetched: ', err);
+              self.waiting = false;
             });
           }
         });
@@ -297,5 +301,9 @@
   .chart-workflow {
     width: 100%;
     height: 100%;
+  }
+
+  .chart-workflow.waiting:hover {
+    cursor: wait;
   }
 </style>
