@@ -14,7 +14,7 @@
         <i class="el-icon-tickets"></i>
         <span>{{item.label}}</span>
       </template>
-      <el-tooltip v-for="wf in item.children" :key="wf.label" effect="dark" :content="wf.label" placement="right">
+      <el-tooltip v-for="wf in item.children" :key="wf.label" effect="dark" :content="wf.label" placement="right" :popper-options="{'gpuAcceleration': false}">
         <el-menu-item :index="String('/workflows/'+wf.label)" :key="wf.label" :route="wf.route">
           <span slot="title">{{wf.label}}</span>
         </el-menu-item>

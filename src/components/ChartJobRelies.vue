@@ -184,6 +184,12 @@
 
         console.log('ns: ', ns);
         console.log('es: ', es);
+        if (ns.length === 0 && es.length === 0) {
+          self.$message({
+            type: 'info',
+            message: '无前序/后序job'
+          });
+        }
         self.dataset_chart.nodes.add(_.unionBy(ns, 'id'));
         self.dataset_chart.edges.add(_.uniq(es));
         // window.self.dataset_chart = self.dataset_chart;

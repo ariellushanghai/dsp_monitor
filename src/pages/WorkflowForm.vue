@@ -30,7 +30,8 @@
               </el-input>
             </el-form-item>
             <el-form-item size="large">
-              <el-button type="danger" @click="deleteWorkFlow" icon="el-icon-delete" :loading="isSending">
+              <el-button v-if="showDeleteWorkFlowBtn" type="danger" @click="deleteWorkFlow" icon="el-icon-delete"
+                         :loading="isSending">
                 删除本WorkFlow
               </el-button>
               <el-button type="primary" @click="validateForm('form')" icon="el-icon-upload2" :loading="isSending">
@@ -46,6 +47,7 @@
 
 <script>
   import API from '@/service/api'
+  import router from '@/router'
 
   export default {
     name: 'WorkflowForm',
@@ -89,6 +91,9 @@
     computed: {
       operation() {
         return this.workflow_id === 0 ? '新增' : '编辑';
+      },
+      showDeleteWorkFlowBtn() {
+        return this.workflow_id === 0 ? false : true;
       },
       title() {
         return this.workflow_id === 0 ? '新增WorkFlow' : `编辑WorkFlow${this.workflow_id}`;
@@ -163,20 +168,25 @@
         });
       },
       deleteWorkFlow() {
+        let self = this;
         console.log('deleteWorkFlow()');
         this.$confirm('继续删除该WorkFlow?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(() => {
+        }).then(() => API['deleteWorkflow'](self.workflow_id)).then((res) => {
           this.$message({
             type: 'success',
-            message: '删除成功!'
+            message: '删除成功!',
+            duration: 2000,
+            onClose: () => {
+              router.replace({name: 'overview'})
+            }
           });
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消删除'
+            message: '删除已取消'
           });
         });
       }
